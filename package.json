@@ -5,7 +5,7 @@
 	"main": "dist/Server.js",
 	"types": "dist/Server.d.ts",
 	"scripts": {
-		"test": "jest",
+		"test": "node tests/all.js && jest",
 		"test:watch": "jest --watch",
 		"start": "npm run build && node dist/start",
 		"build": "tsc -b .",
