@@ -25,7 +25,7 @@ function launchMongo(){
   let mongoProc = launchMongo();
   
   
-  await wait(10 * 1000); // testing test
+  await wait(30 * 1000); // testing test
   
   console.log("Killing mongo");
   mongoProc.kill("SIGINT");
