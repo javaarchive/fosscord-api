@@ -10,7 +10,7 @@ function wait(ms = 1000){
 }
 
 function launchMongo(){
-  let mongoProc = spawn_command_async("mongo",["--dbpath",process.cwd,"--logpath","/tmp/mongod.log"]);
+  let mongoProc = spawn_command_async("mongod",["--dbpath",process.cwd,"--logpath","/tmp/mongod.log"]);
   mongoProc.stdout.pipe(process.stdout);
   mongoProc.stderr.pipe(process.stdout);
   return mongoProc;
