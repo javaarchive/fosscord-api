@@ -10,16 +10,22 @@ function wait(ms = 1000){
 }
 
 function launchMongo(){
-  return spawn_command_async("mongo",["--dbpath",process.cwd,"--logpath","/tmp/mongod.log"]);
+  let mongoProc = spawn_command_async("mongo",["--dbpath",process.cwd,"--logpath","/tmp/mongod.log"]);
+  mongoProc.stdout.pipe(process.stdout);
+  mongoProc.stderr.pipe(process.stdout);
+  return mongoProc;
 }
 
 
 // Main
 
 (async function(){
+  console.log("Launching mongo");
   let mongoProc = launchMongo();
   
-  await wait(9999); // testing test
   
+  await wait(10 * 1000); // testing test
+  
+  console.log("Killing mongo");
   mongoProc.kill("SIGTERM");
 })();
